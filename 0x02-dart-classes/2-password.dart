@@ -1,21 +1,18 @@
 class Password {
-    late String password;
+  late String password;
 
-    Password();
+  Password();
 
-    bool isValid() {
-        if (password.length < 8 || password.length > 16) {
-            return false;
-        }
-        bool hasUpper = password.contains(RegExp(r'[A-Z]'));
-        bool hasLower = password.contains(RegExp(r'[a-z]'));
-        bool hasDigit = password.contains(RegExp(r'\d'));
+  bool isValid() {
+    if (password.length < 8 || password.length > 16) return false;
+    if (!password.contains(RegExp(r'[A-Z]'))) return false;
+    if (!password.contains(RegExp(r'[a-z]'))) return false;
+    if (!password.contains(RegExp(r'[0-9]'))) return false;
+    return true;
+  }
 
-        return hasUpper && hasLower && hasDigit;
-    }
-
-    @override
-    String toString() {
-        return 'Your password is: $password';
-    }
+  @override
+  String toString() {
+    return "Your Password is: $password";
+  }
 }
